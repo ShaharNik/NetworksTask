@@ -97,7 +97,7 @@ void add(vector<string> input, Root *trie)
 
 	string addr = input[0];
 	istringstream s(addr);
-	s >> byte1 >> dot >> byte2 >> dot >> byte3 >> dot >> byte4 >> dot >> subnet; // might add another
+	s >> byte1 >> dot >> byte2 >> dot >> byte3 >> dot >> byte4 >> dot >> subnet; 
 	int binary[32] = {0};
 	toBinary(byte1, byte2, byte3, byte4, binary);
 
@@ -187,7 +187,7 @@ void find(vector<string> input, Root *trie)
 
 	string addr = input[0];
 	istringstream s(addr);
-	s >> byte1 >> dot >> byte2 >> dot >> byte3 >> dot >> byte4; // might add another
+	s >> byte1 >> dot >> byte2 >> dot >> byte3 >> dot >> byte4; 
 	int binary[32] = {0};
 	toBinary(byte1, byte2, byte3, byte4, binary);
 
@@ -268,7 +268,7 @@ void remove(vector<string> input, Root *trie)
 
 	string addr = input[0];
 	istringstream s(addr);
-	s >> byte1 >> dot >> byte2 >> dot >> byte3 >> dot >> byte4 >> dot >> subnet; // might add another
+	s >> byte1 >> dot >> byte2 >> dot >> byte3 >> dot >> byte4 >> dot >> subnet; 
 	int binary[32] = {0};
 	toBinary(byte1, byte2, byte3, byte4, binary);
 
@@ -379,19 +379,16 @@ void requests(vector<string> input, Root *trie)
 		string act = input[0];
 		if (act.compare("ADD") == 0)
 		{
-			// cout << "ADD" << '\n';;
 			input.erase(input.begin());
 			add(input, trie);
 		}
 		else if (act.compare("FIND") == 0)
 		{
-			// cout << "FIND" << '\n';;
 			input.erase(input.begin());
 			find(input, trie);
 		}
 		else if (act.compare("REMOVE") == 0)
 		{
-			// cout << "REMOVE" << '\n';;
 			input.erase(input.begin());
 			remove(input, trie);
 		}
