@@ -8,7 +8,7 @@ using namespace std;
 struct Node
 {
     string result;
-    Node *Left0;	 // 0
+    Node *Left0;  // 0
     Node *Right1; // 1
     Node *Parent;
     int depth;
@@ -18,7 +18,7 @@ struct Node
 struct Root
 {
     string result;
-    Node *Left0;	 // 0
+    Node *Left0;  // 0
     Node *Right1; // 1
     int depth;
     int totalNodes;
@@ -90,7 +90,7 @@ void toBinary(int byte1, int byte2, int byte3, int byte4, int* arr)
 
 void add(vector<string> result, Root *trie)
 {
-    // cout << result[0] << " " << result[1] << '\n';
+    // cout << result[0] << " " << result[1] << endl;
     int byte1, byte2, byte3, byte4;
     char dot;
     int subnet;
@@ -154,7 +154,7 @@ void add(vector<string> result, Root *trie)
 
         pos->result = result[1];
         pos->isEnd= true;
-        cout << "Added " << result[0] << " " << result[1] << " at the depth " << pos->depth << ", total Nodes " << trie->totalNodes << '\n';
+        cout << "Added " << result[0] << " " << result[1] << " at the depth " << pos->depth << ", total Nodes " << trie->totalNodes << endl;
     }
 }
 void find(vector<string> result, Root *trie)
@@ -176,7 +176,7 @@ void find(vector<string> result, Root *trie)
     {
         if (trie->Left0 == nullptr)
         {
-            cout << "Not Found" << '\n';
+            cout << "Not Found" << endl;
             return;
         }
         pos = trie->Left0;
@@ -185,7 +185,7 @@ void find(vector<string> result, Root *trie)
     {
         if (trie->Right1 == nullptr)
         {
-            cout << "Not Found" << '\n';
+            cout << "Not Found" << endl;
             return;
         }
         pos = trie->Right1;
@@ -204,13 +204,13 @@ void find(vector<string> result, Root *trie)
             {
                 if (ans.empty())
                 {
-                    cout << "Not Found" << '\n';
+                    cout << "Not Found" << endl;
                     return;
                 }
                 else
                 {
 
-                    cout << "Found " << result[0] << " " << ans << " at the depth " << depthAns << '\n';
+                    cout << "Found " << result[0] << " " << ans << " at the depth " << depthAns << endl;
                     return;
                 }
             }
@@ -222,13 +222,13 @@ void find(vector<string> result, Root *trie)
             {
                 if (ans.empty())
                 {
-                    cout << "Not Found" << '\n';
+                    cout << "Not Found" << endl;
                     return;
                 }
                 else
                 {
 
-                    cout << "Found " << result[0] << " " << ans << " at the depth " << depthAns << '\n';
+                    cout << "Found " << result[0] << " " << ans << " at the depth " << depthAns << endl;
                     return;
                 }
             }
@@ -255,7 +255,7 @@ void remove(vector<string> result, Root *trie)
         {
             if (trie->Left0 == nullptr)
             {
-                cout << "Unable to delete" << '\n';
+                cout << "Unable to delete" << endl;
                 return;
             }
             pos = trie->Left0;
@@ -264,7 +264,7 @@ void remove(vector<string> result, Root *trie)
         {
             if (trie->Right1 == nullptr)
             {
-                cout << "Unable to delete" << '\n';
+                cout << "Unable to delete" << endl;
                 return;
             }
             pos = trie->Right1;
@@ -275,7 +275,7 @@ void remove(vector<string> result, Root *trie)
             {
                 if (pos->Left0 == nullptr)
                 {
-                    cout << "Unable to delete" << '\n';
+                    cout << "Unable to delete" << endl;
                     return;
                 }
                 pos = pos->Left0;
@@ -284,7 +284,7 @@ void remove(vector<string> result, Root *trie)
             {
                 if (pos->Right1 == nullptr)
                 {
-                    cout << "Unable to delete" << '\n';
+                    cout << "Unable to delete" << endl;
                     return;
                 }
                 pos = pos->Right1;
@@ -302,7 +302,7 @@ void remove(vector<string> result, Root *trie)
                 {
 
                     if (pos->Left0 == nullptr && pos->Right1 == nullptr && (pos->isEnd
-             == false || pos->depth == depthAns))
+                                                                                         == false || pos->depth == depthAns))
                     {
                         Node *dot = pos;
                         if (pos->Parent != nullptr)
@@ -344,7 +344,7 @@ void remove(vector<string> result, Root *trie)
                     done = true;
                 }
             }
-            cout << "Removed " << result[0] << " " << result[1] << " at the depth " << depthAns << ", total Nodes " << trie->totalNodes << '\n';
+            cout << "Removed " << result[0] << " " << result[1] << " at the depth " << depthAns << ", total Nodes " << trie->totalNodes << endl;
         }
     }
 }
@@ -356,19 +356,16 @@ void requests(vector<string> result, Root *trie)
         string act = result[0];
         if (act.compare("ADD") == 0)
         {
-            // cout << "ADD" << '\n';;
             result.erase(result.begin());
             add(result, trie);
         }
         else if (act.compare("FIND") == 0)
         {
-            // cout << "FIND" << '\n';;
             result.erase(result.begin());
             find(result, trie);
         }
         else if (act.compare("REMOVE") == 0)
         {
-            // cout << "REMOVE" << '\n';;
             result.erase(result.begin());
             remove(result, trie);
         }
